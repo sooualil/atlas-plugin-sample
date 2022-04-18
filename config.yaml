@@ -1,8 +1,14 @@
 # input: eth0
-id: feature_extension_1
-name: feature extension 1
-description: example feature extraction description
-authors: flan ben flan
+id: inference_img
+name: inference using model based on image
+description: An inference extension based on a trained model using image approaches
+authors: 
+  - Abdelkader Elmahdaouy
+  - Abdellah Elmekki
+  - Soufiane Oualil
+  - Ismail Berrada
+  - Zakaria Yartaoui
+
 license: BSD
 version: 1.0
 
@@ -19,24 +25,25 @@ requirements: requirements.txt # .yaml
 log:
   dir: /logs
   # Setting the log level: CRITICAL, ERROR, WARNING, INFO, DEBUG
-  level: INFO 
+  level: DEBUG 
 
-# data:
-#   model: path/to/model.pickle # csv, ...
-#   key: path/to/key.pem # specify the key when the model is crypted
-#   batch_size: 200
-#   format: pytorch # tensorflow, ONNX...
-#   device: CPU # , GPU
-
+data:
+  model: data # csv, ...
+  key: path/to/key.pem # specify the key when the model is crypted
+  batch_size: 200
+  format: pytorch # tensorflow, ONNX...
+  device: CPU # , GPU
+  
 
 
 repository: https://github.com/path/to/repository.git
 
 # TODO: Comment each use case
 channels:
-  input: []
-  subscribe: []
-  publish: []
+  publish: [baselineInference]
+  subscribe: [testFeature]
+
+
 
 # Additional options for custom uses
 # Examples: calls for external data or service
@@ -44,17 +51,3 @@ channels:
 #   virustotal:
 #     url: http://example.com/
 #     api_key: api_key
-
-
-# Additional options for custom uses
-# Examples: logging to server
-# options:
-#   logstash:
-#     # url: http://example.com/
-#     port: port
-#     index: index_name
-#     keywords: []
-#   elastic:
-#     # url: http://example.com
-#     index: index_name
-    
